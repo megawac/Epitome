@@ -60,7 +60,7 @@
 				this._set.apply(this, arguments);
 				// if any properties did change, fire a change event with the array.
 				this.propertiesChanged.length && this.trigger('change', this.get(this.propertiesChanged));
-				this.validationFailed.length && this.trigger('error', [this.validationFailed]);
+				this.validationFailed.length && this.trigger('error', this.validationFailed);
 
 				return this;
 			},
@@ -148,7 +148,7 @@
 					self = this;
 
 				// let the instance know.
-				this.trigger('change', [keys]);
+				this.trigger('change', keys);
 
 				// fire change for all keys in the model.
 				Array.each(keys, function(key){

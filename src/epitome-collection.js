@@ -79,7 +79,7 @@
 				this.length = this._models.length;
 
 				// let somebody know.
-				return this.trigger('add', [model, model.cid]).trigger('reset', [model, model.cid]);
+				return this.trigger('add', model, model.cid).trigger('reset', model, model.cid);
 			},
 
 			removeModel: function(models, quiet){
@@ -100,10 +100,10 @@
 					self.length = self._models.length;
 
 					// let somebody know we lost some.
-					quiet || self.trigger('remove', [model, model.cid]);
+					quiet || self.trigger('remove', model, model.cid);
 				});
 
-				return this.trigger('reset', [models]);
+				return this.trigger('reset', models);
 			},
 
 			get: function(what){

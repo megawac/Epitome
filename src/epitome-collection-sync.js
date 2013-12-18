@@ -46,12 +46,10 @@
 					},
 					onSuccess: function(responseObj){
 						responseObj = self.postProcessor && self.postProcessor(responseObj);
-						self.trigger(eventPseudo + rid, [
-							[responseObj]
-						]);
+						self.trigger(eventPseudo + rid, [responseObj]);
 					},
 					onFailure: function(){
-						self.trigger(eventPseudo + 'error', [this.options.method, this.options.url, this.options.data]);
+						self.trigger(eventPseudo + 'error', this.options.method, this.options.url, this.options.data);
 					}
 				});
 
@@ -74,7 +72,7 @@
 					}
 
 					// finaly fire the event to instance
-					this.trigger('fetch', [models]);
+					this.trigger('fetch', models);
 				});
 
 				this.request.get(queryParams);

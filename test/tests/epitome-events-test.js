@@ -114,7 +114,7 @@ buster.testCase('Basic Epitome Events test >', {
 
 		bar.listenTo(foo).on('test', spy);
 
-		foo.trigger('test', [data]);
+		foo.trigger('test', data);
 
 		buster.assert.calledWith(spy, foo, data);
 	},
@@ -128,6 +128,17 @@ buster.testCase('Basic Epitome Events test >', {
 		foo.trigger('test1').trigger('test2');
 
 		buster.assert.calledTwice(spy);
+	},
+	
+	'Expect arrays to be fired in events like all other data': function() {
+		var spy = this.spy(),
+			foo = new this.Foo(),
+			data = [[1,2,3, 'four', 'five', 'six'], 2];
+
+		foo.on('test3', spy);
+		foo.trigger('test3', data);
+
+		buster.assert.calledWith(spy, data);
 	}
 
 });

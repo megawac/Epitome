@@ -164,12 +164,12 @@
 						// only becomes an existing model after a successful sync
 						self.isNewModel = false;
 
-						self.trigger(syncPseudo + rid, [responseObj]);
-						self.trigger('sync', [responseObj, this.options.method, this.options.data]);
+						self.trigger(syncPseudo + rid, responseObj);
+						self.trigger('sync', responseObj, this.options.method, this.options.data);
 					},
 					onFailure: function(){
-						self.trigger(syncPseudo + 'error', [this.options.method, this.options.url, this.options.data]);
-						self.trigger('requestFailure', [this.status, this.response.text]);
+						self.trigger(syncPseudo + 'error', this.options.method, this.options.url, this.options.data);
+						self.trigger('requestFailure', this.status, this.response.text);
 					}
 				};
 
